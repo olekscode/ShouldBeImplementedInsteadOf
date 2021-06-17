@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/olekscode/ShouldBeImplementedInsteadOf/badge.svg?branch=master)](https://coveralls.io/github/olekscode/ShouldBeImplementedInsteadOf?branch=master)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/olekscode/ShouldBeImplementedInsteadOf/master/LICENSE)
 
-A prototype warning for Pharo that allows us to automatically rename implementors
+A prototype warning for Pharo that allows us to automatically rename the implementations of an abstract hook.
 
 ## How does it work?
 
@@ -49,3 +49,12 @@ spec
 ```
 
 If you are new to baselines and Metacello, check out the [Baselines](https://github.com/pharo-open-documentation/pharo-wiki/blob/master/General/Baselines.md) tutorial on Pharo Wiki.
+
+## How to use it
+
+Add the following line inside your hook method (you can use it instead of `self subclassResponsibility`) and replace `#oldMethod` with the obsolete hook name: 
+
+```Smalltalk
+self shouldBeImplementedInsteadOf: #oldMethod.
+```
+
