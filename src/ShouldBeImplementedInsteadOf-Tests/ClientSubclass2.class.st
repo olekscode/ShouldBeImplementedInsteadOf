@@ -6,10 +6,12 @@ Class {
 
 { #category : #'as yet unclassified' }
 ClientSubclass2 >> methodThatCallsOldMethod [
+	<ignoreForCoverage>
 	self oldMethod
 ]
 
 { #category : #accessing }
 ClientSubclass2 >> oldMethod [
+	<ignoreForCoverage>
 	"do nothing"
 ]

@@ -28,6 +28,7 @@ LibrarySuperclass class >> revertRenamingInAllSubclasses [
 
 { #category : #'scrollbar-brick-accessing' }
 LibrarySuperclass >> newMethod [
+	<ignoreForCoverage>
 	self shouldBeImplementedInsteadOf: #oldMethod.
 ]
 
@@ -35,4 +36,5 @@ LibrarySuperclass >> newMethod [
 LibrarySuperclass >> oldMethod [
 	"For some reason, library developers may decide to keep the oldMethod alongside the new one.
 	It should not be rewritten"
+	<ignoreForCoverage>
 ]

@@ -6,5 +6,6 @@ Class {
 
 { #category : #accessing }
 ClientSubclass5 >> oldMethod [
+	<ignoreForCoverage>
 	"do nothing"
 ]

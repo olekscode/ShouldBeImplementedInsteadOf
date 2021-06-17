@@ -9,7 +9,7 @@ Class {
 
 { #category : #tests }
 ShouldBeImplementedInsteadOfTest >> isMethodCallRewrittenIn: aMethod [
-	^ aMethod sourceCode lines second trimBoth = 'self newMethod'.
+	^ aMethod sourceCode lines third trimBoth = 'self newMethod'.
 ]
 
 { #category : #tests }
