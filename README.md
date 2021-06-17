@@ -6,6 +6,10 @@
 
 A prototype warning for Pharo that allows us to automatically rename implementors
 
+## How does it work?
+
+<img src="img/hierarchy1.png"height="100">
+
 ## How to install it?
 
 To install `ShouldBeImplementedInsteadOf`, go to the Playground (Ctrl+OW) in your [Pharo](https://pharo.org/) image and execute the following Metacello script (select it and press Do-it button or Ctrl+D):
@@ -28,9 +32,3 @@ spec
 ```
 
 If you are new to baselines and Metacello, check out the [Baselines](https://github.com/pharo-open-documentation/pharo-wiki/blob/master/General/Baselines.md) tutorial on Pharo Wiki.
-
-## How to use it?
-
-```Smalltalk
-self shouldBeImplementedInsteadOf: #oldMethodName
-```
