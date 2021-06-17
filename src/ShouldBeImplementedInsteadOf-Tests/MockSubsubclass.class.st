@@ -7,7 +7,7 @@ Class {
 { #category : #examples }
 MockSubsubclass class >> example [
 	<example>
-	self new bar
+	self new foo
 ]
 
 { #category : #accessing }

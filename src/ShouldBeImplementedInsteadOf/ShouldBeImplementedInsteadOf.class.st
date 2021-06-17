@@ -34,9 +34,27 @@ ShouldBeImplementedInsteadOf >> receiverClass: aClass [
 	receiverClass := aClass
 ]
 
+{ #category : #'instance creation' }
+ShouldBeImplementedInsteadOf >> rename: anOldSelector to: aNewSelector in: aClass [
+	| environment permutation |
+	
+	environment := RBNamespace onEnvironment:
+		(RBClassEnvironment class: aClass).
+	
+	"No permutation."
+	permutation := (1 to: (aClass >> oldSelector) argumentNames size) asArray.
+	
+	(RBRenameMethodRefactoring
+		model: environment
+		renameMethod: anOldSelector
+		in: aClass
+		to: aNewSelector
+		permutation: permutation) execute.
+]
+
 { #category : #signalling }
 ShouldBeImplementedInsteadOf >> signal [
-	| hierarchyUntilConcernedParent hierarchyWithSubclasses classesToRewrite environment permutation |
+	| hierarchyUntilConcernedParent hierarchyWithSubclasses classesToRewrite |
 	
 	hierarchyUntilConcernedParent := receiverClass allSuperclassesIncluding: concernedParentClass.
 	
@@ -54,18 +72,6 @@ ShouldBeImplementedInsteadOf >> signal [
 	classesToRewrite := hierarchyWithSubclasses
 		select: [ :aClass | aClass includesLocalSelector: oldSelector ].
 		
-	environment := RBNamespace onEnvironment:
-		(RBPackageEnvironment packages: 
-			(classesToRewrite collect: #package) asSet asArray).
-		
 	classesToRewrite do: [ :aClass |
-		"No permutation."
-		permutation := (1 to: (aClass >> oldSelector) argumentNames size) asArray.
-	
-		(RBRenameMethodRefactoring
-			model: environment
-			renameMethod: oldSelector
-			in: aClass
-			to: selector
-			permutation: permutation) execute ].
+		self rename: oldSelector to: selector in: aClass ].
 ]
