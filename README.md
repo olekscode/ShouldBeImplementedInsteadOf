@@ -10,11 +10,11 @@ A prototype warning for Pharo that allows us to automatically rename implementor
 
 In object-oriented programming it is a common practice for software libraries to provide abstract hooks that should be overriden by clients (see `oldMethod` in the picture below). Another method of the library then calls the hook method and then the correct client's implementation is executed.
 
-<img src="img/hierarchy1.png" height="440">
+<img src="img/hierarchy1.png" height="450">
 
 However, in a new version, the library can rename the hook from `oldMethod` to `newMethod` (see the picture below). Client systems might not receive any error or deprecation warning but their implementation will never be called.
 
-<img src="img/hierarchy2.png" height="440">
+<img src="img/hierarchy2.png" height="450">
 
 To prevent this from happening, we propose library developers to replace `self subclassResponsibility` inside their abstract hook with the new message `self shouldBeImplementedInsteadOf: #oldMethod`. This will signal a warning which will try to update the client code and call the right method. Take a look at the example in the picture below. The steps are as follows:
 
@@ -25,7 +25,7 @@ To prevent this from happening, we propose library developers to replace `self s
 
 (all that without interrupting the execution)
 
-<img src="img/hierarchy3.png" height="440">
+<img src="img/hierarchy3.png" height="430">
 
 ## How to install it?
 
