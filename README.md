@@ -8,7 +8,7 @@ A prototype warning for Pharo that allows us to automatically rename implementor
 
 ## How does it work?
 
-<img src="img/hierarchy1.png"height="100">
+<img src="img/hierarchy1.png"height="100" />
 
 ## How to install it?
 
