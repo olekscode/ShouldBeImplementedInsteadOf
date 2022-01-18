@@ -68,3 +68,5 @@ However, we add an oldMethod with a deprecation and a transformation rule to the
 This way, the callers will be dynamically transformed.
 
 To make sure that when an additional part of the client is loaded after the transformation, the transformation can still be reapplied to that client, we need to insert the `self shouldBeImplementedInsteadOf: #oldMethod` to every `newMethod` that we generate.
+
+<img src="img/hierarchy4.png" height="430">
