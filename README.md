@@ -58,3 +58,13 @@ Add the following line inside your hook method (you can use it instead of `self 
 self shouldBeImplementedInsteadOf: #oldMethod.
 ```
 
+# Update (18 Jan 2022)
+
+_(after discussing with Stéphane, Nicolas, Santiago, and Christophe)_
+
+Instead of applying the Rename refactoring, which fixes the call-sites, we simply introduce the new method into each subclass by copying the contents of the old method.
+The old method is removed.
+However, we add an oldMethod with a deprecation and a transformation rule to the superclass in the library.
+This way, the callers will be dynamically transformed.
+
+To make sure that when an additional part of the client is loaded after the transformation, the transformation can still be reapplied to that client, we need to insert the `self shouldBeImplementedInsteadOf: #oldMethod` to every `newMethod` that we generate.
